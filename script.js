@@ -1,6 +1,6 @@
 const inputs = document.querySelectorAll(".input");
 const screen = document.querySelector(".calculator-screen");
-
+const operator = ["+", "-", "×", "÷"];
 
 const updateScreen = (input) => {
     const lastChar = screen.value[screen.value.length - 1];
@@ -9,7 +9,11 @@ const updateScreen = (input) => {
     }
     else if (lastChar === "%" && !isNaN(input)) {
         screen.value += "×" + input;
-    } else {
+    } 
+    else if (operator.includes(lastChar) && operator.includes(input)) {
+        screen.value = screen.value.substr(0, screen.value.length - 1) + input;
+    }
+    else {
         screen.value += input;
     }  
 
